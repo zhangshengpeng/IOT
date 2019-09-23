@@ -28,8 +28,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 let sockserver = net.createServer((sock)=>{
   console.log('sock:',sock)
   sock.on('data', (data)=>{
-    console.log("data:", data)
-    console.log('data类型：', typeof data)
+    let buf = new Buffer(1000); 
+    buf.write(data)
+    console.log("data:", buf)
+    console.log('data类型：', buffer.toString())
     sock.write("回发数据：",data)
   })
 })
