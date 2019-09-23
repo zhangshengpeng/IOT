@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const net = require('net')
+const iconv = require('iconv-lite')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -27,7 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //socket
 let sockserver = net.createServer((sock)=>{
   sock.on('data', (data)=>{
-    console.log('data：', data.toString('GBK'))
+    console.log('data：', iconv.decode(data, 'gbk'))
     sock.write("回发数据：",data)
   })
 })
