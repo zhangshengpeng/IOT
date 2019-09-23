@@ -23,20 +23,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-
 
 //socket
 let sockserver = net.createServer((sock)=>{
   console.log('sock:',sock)
-  sock.on('data', (data)=>{
+  sock.on((data)=>{
     console.log("data:", data)
     sock.write("回发数据：",data)
   })
 })
 sockserver.listen(port, host)
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
