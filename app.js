@@ -32,10 +32,10 @@ let sockserver = net.createServer((sock)=>{
     console.log(str)
     let ue={
       IMSI: str.slice(2,17),
-      host: str.slice(36,51),
-      port: str.slice(56,60),
-      serialNumber: str.slice(100,110),
-      phone: ''
+      host: str.slice(38,53),
+      port: str.slice(53,57),
+      serialNumber: str.slice(108,127),
+      phone: str.slice(189, 200)
     }
     console.log(ue)
     sock.write("回发数据：",data)
