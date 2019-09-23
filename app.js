@@ -28,7 +28,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 //socket
 let sockserver = net.createServer((sock)=>{
   sock.on('data', (data)=>{
-    console.log('data：', iconv.decode(data, 'gbk'))
+    let str=iconv.decode(data, 'gbk')
+    let ue={
+      IMSI: str.slice(3,17),
+      host: str.slice(35.50),
+      port: '',
+      serialNumber: '',
+      phone: ''
+    }
+    console.log(ue)
     sock.write("回发数据：",data)
   })
 })
