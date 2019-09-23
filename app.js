@@ -29,6 +29,7 @@ let sockserver = net.createServer((sock)=>{
   console.log('sock:',sock)
   sock.on((data)=>{
     console.log("data:", data)
+    console.log('data类型：', typeof data)
     sock.write("回发数据：",data)
   })
 })
