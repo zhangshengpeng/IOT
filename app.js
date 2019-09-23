@@ -30,8 +30,7 @@ let sockserver = net.createServer((sock)=>{
   sock.on('data', (data)=>{
     let buf = new Buffer(1000); 
     buf.write(data)
-    console.log("data:", buf)
-    console.log('data类型：', buffer.toString())
+    console.log('data：', buf.toString())
     sock.write("回发数据：",data)
   })
 })
