@@ -29,6 +29,7 @@ app.use('/users', usersRouter);
 
 //socket
 let sockserver = net.createServer((sock)=>{
+  console.log(sock)
   sock.on('data', (data)=>{
     console.log(data)
     sock.write("回发数据：",data)
