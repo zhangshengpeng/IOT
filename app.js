@@ -26,11 +26,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //socket
 let sockserver = net.createServer((sock)=>{
-  console.log('sock:',sock)
   sock.on('data', (data)=>{
-    let buf = new Buffer(1000); 
-    buf.write(data)
-    console.log('data：', buf.toString())
+    console.log('data：', data.toString())
     sock.write("回发数据：",data)
   })
 })
