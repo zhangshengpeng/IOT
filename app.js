@@ -29,9 +29,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 let sockserver = net.createServer((sock)=>{
   sock.on('data', (data)=>{
     let str=iconv.decode(data, 'gbk')
+    console.log(str)
     let ue={
-      IMSI: str.slice(3,17),
-      host: str.slice(35.50),
+      IMSI: str.slice(2,17),
+      host: str.slice(35,50),
       port: '',
       serialNumber: '',
       phone: ''
