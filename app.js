@@ -6,8 +6,7 @@ var logger = require('morgan');
 const net = require('net')
 const iconv = require('iconv-lite')
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+let router = require('./routes/mysql');
 
 var app = express();
 
