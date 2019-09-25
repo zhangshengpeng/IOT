@@ -6,7 +6,7 @@ var logger = require('morgan');
 const net = require('net')
 const iconv = require('iconv-lite')
 
-let router = require('./routes/mysql');
+let mySql = require('./routes/mysql');
 
 var app = express();
 
@@ -37,6 +37,7 @@ let sockserver = net.createServer((sock)=>{
       phone: str.slice(189, 200)
     }
     console.log(ue)
+    mySql.Insert(ue)
     sock.write("回发数据：",data)
   })
 })
