@@ -35,7 +35,7 @@ exports.Insert = (data)=> {
     let m = (insertTime.getSeconds()<10? '0'+insertTime.getSeconds():insertTime.getSeconds());
     let date= Y+M+D+h+m;
     let sql = "INSERT INTO iot(IMSI, host, port, serialNumber, phone, date) VALUE(?, ?, ?, ?, ?, ?)";
-    let params = [data.IMSI, data.host, data.port, data.seriaNumber, data.phone, date]
+    let params = [data.IMSI, data.host, data.port, data.serialNumber, data.phone, date]
     connection.query(sql,params, (err, result)=> {
         if(err){
             console.log(err)
