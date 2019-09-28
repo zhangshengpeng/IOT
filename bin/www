@@ -1,8 +1,5 @@
 #!/usr/bin/env node
-
-/**
- * Module dependencies.
- */
+let mySql = require('../routes/mysql')
 
 var app = require('../app');
 var debug = require('debug')('iot:server');
@@ -12,7 +9,7 @@ var http = require('http');
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '666');
+var port = normalizePort(process.env.PORT || '8082');
 app.set('port', port);
 
 /**
@@ -21,16 +18,9 @@ app.set('port', port);
 
 var server = http.createServer(app);
 var io = require('socket.io')(server);
-//socket.io
-io.on('connection',function(socket){
-  
-  socket.on('iot',()=>{
-    var sql = "SELECT * from iot where IMSI order by IMST desc limit 10"
-    cnt.query(sql,function(err,result){if (err) {console.log(err)}else{  
-    console.log(result)
-    io.emit('iot',result)}})
-  })
-})
+mySql.getIo(io)
+
+
 /**
  * Listen on provided port, on all network interfaces.
  */
@@ -98,3 +88,5 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
+
+exports.abc = '999'
