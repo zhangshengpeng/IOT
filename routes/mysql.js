@@ -39,7 +39,7 @@ exports.Insert = (data)=> {
     let M = (insertTime.getMonth()+1 < 10 ? '0'+(insertTime.getMonth()+1) : insertTime.getMonth()+1) + '-';
     let D = (insertTime.getDate()<10? '0'+insertTime.getDate():insertTime.getDate()) + ' ';
     let h = (insertTime.getHours()<10? '0'+insertTime.getHours():insertTime.getHours()) + ':';
-    let m = (insertTime.getSeconds()<10? '0'+insertTime.getSeconds():insertTime.getSeconds());
+    let m = (insertTime.getMinutes()<10? '0'+insertTime.getMinutes():insertTime.getMinutes());
     let date= Y+M+D+h+m;
     let sql = "INSERT INTO iot(IMSI, host, port, serialNumber, phone, date) VALUE(?, ?, ?, ?, ?, ?)";
     let params = [data.IMSI, data.host, data.port, data.serialNumber, data.phone, date]
