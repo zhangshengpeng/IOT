@@ -2,7 +2,7 @@ let mysql = require('mysql')
 let socekt
 //事件监听与驱动
 var EventEmitter = require('events').EventEmitter
-var emitter = new EventEmitter();
+var event = new EventEmitter();
 
 let connection = mysql.createConnection({
     host: '101.132.116.167',
@@ -29,6 +29,10 @@ exports.getIo = (io)=>{
     socket.on('connection', (socket)=>{
         console.log('connect in')
     })
+    event.on('sendData', ()=> {
+        socekt.emit('message', result) 
+    }); 
+    
 }
 
 exports.Insert = (data)=> {
@@ -46,8 +50,7 @@ exports.Insert = (data)=> {
             console.log(err)
         } else {
             console.log(result)
-            socekt.emit('message', result)
-            
+            event.emit('sendData');
         }
     })
 }
