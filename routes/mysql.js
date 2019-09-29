@@ -83,7 +83,7 @@ exports.Insert = (data)=> {
                 serialNumber: data.serialNumber,
                 phone: data.phone,
                 date,
-                result
+                list: result
             }
             event.emit('sendData',Data)
             }
