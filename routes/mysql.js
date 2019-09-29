@@ -41,8 +41,8 @@ exports.Insert = (data)=> {
     let h = (insertTime.getHours()<10? '0'+insertTime.getHours():insertTime.getHours()) + ':';
     let m = (insertTime.getMinutes()<10? '0'+insertTime.getMinutes():insertTime.getMinutes());
     let date= Y+M+D+h+m;
-    let sql = "INSERT INTO iot(IMSI, host, port, serialNumber, phone, date) VALUE(?, ?, ?, ?, ?, ?)";
-    let params = [data.IMSI, data.host, data.port, data.serialNumber, data.phone, date]
+    let sql = "INSERT INTO iot(IMSI, host, port, serialNumber, phone, date, temp) VALUE(?, ?, ?, ?, ?, ?, ?)";
+    let params = [data.IMSI, data.host, data.port, data.serialNumber, data.phone, date, data.temp]
     connection.query(sql,params, (err, result)=> {
         if(err){
             console.log(err)
