@@ -25,11 +25,10 @@ var conn=function(){
 setInterval(conn, 3600*1000);
 
 exports.getIo = (io)=>{
-    socket = io
-    socket.on('connection', (socket)=>{
+    io.on('connection', (socket)=>{
         console.log('connect in')
         event.on('sendData', ()=> {
-            socekt.emit('message', result) 
+            io.emit('message', result) 
         }); 
     })
 }
