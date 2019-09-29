@@ -53,7 +53,8 @@ exports.Insert = (data)=> {
                 IMSI:data.IMSI,
                 result: result
             }
-            event.emit('sendData',Data)}
+            // event.emit('sendData',Data)
+            }
             })
         }
     })
