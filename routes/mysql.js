@@ -47,8 +47,11 @@ exports.Insert = (data)=> {
         if(err){
             console.log(err)
         } else {
+            var sql = "SELECT * from iot where IMSI order by IMSI desc limit 10"
+            connection.query(sql,function(err,result){if (err) {console.log(err)}else{  
             console.log(result)
-            event.emit('sendData',result);
+            event.emit('sendData',result);}
+            })
         }
     })
 }
