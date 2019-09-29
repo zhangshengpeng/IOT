@@ -28,7 +28,7 @@ exports.getIo = (io)=>{
     io.on('connection', (socket)=>{
         console.log('connect in')
         event.on('sendData', (data)=> {
-            io.emit('message', data) 
+            io.emit('init', data) 
         });
         socket.on('init',(imsi)=>{
             let sql = `SELECT * FROM iot WHERE imsi = ${imsi} limit 20`
