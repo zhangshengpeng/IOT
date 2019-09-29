@@ -50,10 +50,15 @@ exports.Insert = (data)=> {
             var sql = "SELECT * from iot where date order by date desc limit 20"
             connection.query(sql,function(err,result){if (err) {console.log(err)}else{ 
             let Data = {
-                IMSI:data.IMSI,
-                result: result
+                IMSI: data.IMSI,
+                host: data.host,
+                port: data.port,
+                serialNumber: data.serialNumber,
+                phone: data.phone,
+                date,
+                result
             }
-            // event.emit('sendData',Data)
+            event.emit('sendData',Data)
             }
             })
         }
