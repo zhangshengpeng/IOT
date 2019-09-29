@@ -31,11 +31,29 @@ exports.getIo = (io)=>{
             io.emit('message', data) 
         });
         socket.on('init',(imsi)=>{
-            let sql = `SELECT * FROM iot WHERE imst = ${imsi} desc limit 20`
+            let sql = `SELECT * FROM iot WHERE imsi = ${imsi} limit 20`
             connection.query(sql,(err,result)=>{
                 if(err){ console.log(err) 
                 } else {
-                    console.log(result)
+                    let arr =[]
+                    result.forEach(item => {
+                        let params = {
+                            date: item.date,
+                            light: item.light,
+                            temp: item.temp
+                        }
+                        arr.push(params)
+                    });
+                    let Data = {
+                        IMSI: result[19].IMSI,
+                        host: result[19].host,
+                        port: result[19].port,
+                        serialNumber: result[19].serialNumber,
+                        phone: result[19].phone,
+                        date: result[19].date,
+                        list: arr
+                    }
+                    io.emit('init', Data)
                 }
             })
         })
