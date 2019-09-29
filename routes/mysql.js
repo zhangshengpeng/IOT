@@ -48,7 +48,7 @@ exports.Insert = (data)=> {
             console.log(err)
         } else {
             console.log(result)
-            event.emit('sendData');
+            event.emit('sendData',result);
         }
     })
 }
