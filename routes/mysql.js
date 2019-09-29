@@ -47,7 +47,7 @@ exports.Insert = (data)=> {
         if(err){
             console.log(err)
         } else {
-            var sql = "SELECT * from iot where date order by date desc limit 20"
+            var sql = "SELECT temp,light from iot where date order by date desc limit 20"
             connection.query(sql,function(err,result){if (err) {console.log(err)}else{ 
             let Data = {
                 IMSI: data.IMSI,

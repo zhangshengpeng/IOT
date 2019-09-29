@@ -29,15 +29,14 @@ let sockserver = net.createServer((sock)=>{
   sock.on('data', (data)=>{
     let str=iconv.decode(data, 'gbk')
     console.log(str)
-    var s = str.split('***')
     let ue={
       IMSI: str.slice(2,17),
       host: str.slice(38,53),
       port: str.slice(53,57),
       serialNumber: str.slice(116,135),
       phone: str.slice(197, 208),
-      light: s[1].slice(0, 4),
-      temp: s[1].slice(5,9),
+      light: s[1].slice(0, 5),
+      temp: s[1].slice(5,5),
     }
     console.log(ue)
     mySql.Insert(ue)
