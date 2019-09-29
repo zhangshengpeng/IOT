@@ -27,7 +27,7 @@ setInterval(conn, 3600*1000);
 exports.getIo = (io)=>{
     io.on('connection', (socket)=>{
         console.log('connect in')
-        event.on('sendData', ()=> {
+        event.on('sendData', (result)=> {
             io.emit('message', result) 
         }); 
     })
@@ -57,7 +57,8 @@ exports.getData = (io)=>{
     var sql = "SELECT * from iot where IMSI order by IMSI desc limit 10"
     connection.query(sql,function(err,result){if (err) {console.log(err)}else{  
     console.log(result)
-    io.emit('message',result)}})
+    io.emit('message',result)}
+    })
 }
 
 
