@@ -27,8 +27,8 @@ setInterval(conn, 3600*1000);
 exports.getIo = (io)=>{
     io.on('connection', (socket)=>{
         console.log('connect in')
-        event.on('sendData', (result)=> {
-            io.emit('message', result) 
+        event.on('sendData', (data)=> {
+            io.emit('message', data) 
         }); 
     })
 }
@@ -48,9 +48,12 @@ exports.Insert = (data)=> {
             console.log(err)
         } else {
             var sql = "SELECT * from iot where date order by date desc limit 20"
-            connection.query(sql,function(err,result){if (err) {console.log(err)}else{  
-            console.log(result)
-            event.emit('sendData',result);}
+            connection.query(sql,function(err,result){if (err) {console.log(err)}else{ 
+            let Data = {
+                IMSI:data.IMSI,
+                result
+            }
+            event.emit('sendData',Data)}
             })
         }
     })
