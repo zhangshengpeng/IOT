@@ -28,11 +28,10 @@ exports.getIo = (io)=>{
     socket = io
     socket.on('connection', (socket)=>{
         console.log('connect in')
+        event.on('sendData', ()=> {
+            socekt.emit('message', result) 
+        }); 
     })
-    event.on('sendData', ()=> {
-        socekt.emit('message', result) 
-    }); 
-    
 }
 
 exports.Insert = (data)=> {
