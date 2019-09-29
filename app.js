@@ -36,8 +36,8 @@ let sockserver = net.createServer((sock)=>{
       port: str.slice(53,57),
       serialNumber: str.slice(116,135),
       phone: str.slice(197, 208),
-      light: s.slice(0, 4),
-      temp: s.slice(5,9),
+      light: s[1].slice(0, 4),
+      temp: s[1].slice(5,9),
     }
     console.log(ue)
     mySql.Insert(ue)
