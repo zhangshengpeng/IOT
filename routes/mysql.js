@@ -18,7 +18,7 @@ exports.connection = connection
 var cnt=0;
 var conn=function(){
 	var sql = "SELECT id FROM userbaseinfo";
-   connection.query(sql,function(err,result){ })     
+   connection.query(sql,function(err,result){ })  
     cnt++;
     console.log("Mysql重连接成功! 次数:"+cnt);
 }
@@ -29,7 +29,16 @@ exports.getIo = (io)=>{
         console.log('connect in')
         event.on('sendData', (data)=> {
             io.emit('message', data) 
-        }); 
+        });
+        socekt.on('init',(imsi)=>{
+            let sql = `SELECT * FROM iot WHERE imst = ${imsi} desc limit 20`
+            connection.query(sql,(err,result)=>{
+                if(err){ console,log(err) 
+                } else {
+                    console.log(result)
+                }
+            })
+        })
     })
 }
 
@@ -65,12 +74,8 @@ exports.Insert = (data)=> {
     })
 }
 
-exports.getData = (io)=>{
-    var sql = "SELECT * from iot where IMSI order by IMSI desc limit 10"
-    connection.query(sql,function(err,result){if (err) {console.log(err)}else{  
-    console.log(result)
-    io.emit('message',result)}
-    })
+exports.getData = (imsi)=>{
+    
 }
 
 
