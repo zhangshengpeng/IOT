@@ -36,7 +36,7 @@ let sockserver = net.createServer((sock)=>{
       serialNumber: str.slice(108,127),
       phone: str.slice(189, 200)
     }
-    console,log(ue)
+    console.log(ue)
     mySql.Insert(ue)
     sock.write("回发数据：",data)
   })
