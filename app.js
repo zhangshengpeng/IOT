@@ -33,8 +33,8 @@ let sockserver = net.createServer((sock)=>{
       IMSI: str.slice(2,17),
       host: str.slice(38,53),
       port: str.slice(53,57),
-      serialNumber: str.slice(115,134),
-      phone: str.slice(196, 208),
+      serialNumber: str.slice(116,135),
+      phone: str.slice(197, 209),
       temp: str.substring(str.length-8)
     }
     console.log(ue)
