@@ -45,12 +45,12 @@ exports.getIo = (io)=>{
                         arr.push(params)
                     });
                     let Data = {
-                        IMSI: result[19].IMSI,
-                        host: result[19].host,
-                        port: result[19].port,
-                        serialNumber: result[19].serialNumber,
-                        phone: result[19].phone,
-                        date: result[19].date,
+                        IMSI: result[result.length-1].IMSI,
+                        host: result[result.length-1].host,
+                        port: result[result.length-1].port,
+                        serialNumber: result[result.length-1].serialNumber,
+                        phone: result[result.length-1].phone,
+                        date: result[result.length-1].date,
                         list: arr
                     }
                     io.emit('init', Data)
