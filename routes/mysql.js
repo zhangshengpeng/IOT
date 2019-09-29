@@ -47,6 +47,7 @@ exports.Insert = (data)=> {
         } else {
             console.log(result)
             socekt.emit('message', result)
+            
         }
     })
 }
