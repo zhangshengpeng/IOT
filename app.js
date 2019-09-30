@@ -41,7 +41,7 @@ let sockserver = net.createServer((sock)=>{
     }
     console.log(ue)
     mySql.Insert(ue)
-    sock.write("回发数据：",data)
+    sock.write('收到，over')
   })
 })
 sockserver.listen(port, host)
